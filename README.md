@@ -1,6 +1,6 @@
 # quillview
 
-Use quill to edit contents and display on iOS.
+Display quill format on iOS native views.
 
 # Usage
 
@@ -18,6 +18,7 @@ quillView.contentStrings = @"{\"ops\":[{\"insert\":\"Quill uses classes for most
 
 Quill Editor
 https://quilljs.com/
+https://github.com/quilljs/quill
 
 CSS Parser
 https://github.com/gavinkwoe/BeeFramework/tree/master/framework/mvc/view/css
