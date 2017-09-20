@@ -16,7 +16,6 @@
 		9CE4D9CB1F580FAA0043E6FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE4D9C91F580FAA0043E6FE /* Main.storyboard */; };
 		9CE4D9CD1F580FAA0043E6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CE4D9CC1F580FAA0043E6FE /* Assets.xcassets */; };
 		9CE4D9D01F580FAA0043E6FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE4D9CE1F580FAA0043E6FE /* LaunchScreen.storyboard */; };
-		9CE4D9D91F58112E0043E6FE /* QuillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE4D9D81F58112E0043E6FE /* QuillView.m */; };
 		9CE6DA081F6A1798000D38B4 /* CSSOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6D9FB1F6A1798000D38B4 /* CSSOM.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CE6DA091F6A1798000D38B4 /* CSSRuleSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6D9FD1F6A1798000D38B4 /* CSSRuleSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CE6DA0A1F6A1798000D38B4 /* CSSSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6D9FF1F6A1798000D38B4 /* CSSSelector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -43,8 +42,6 @@
 		9CE4D9CC1F580FAA0043E6FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CE4D9CF1F580FAA0043E6FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CE4D9D11F580FAA0043E6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CE4D9D71F58112E0043E6FE /* QuillView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuillView.h; sourceTree = "<group>"; };
-		9CE4D9D81F58112E0043E6FE /* QuillView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuillView.m; sourceTree = "<group>"; };
 		9CE6D9FA1F6A1798000D38B4 /* CSSOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSOM.h; sourceTree = "<group>"; };
 		9CE6D9FB1F6A1798000D38B4 /* CSSOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSOM.m; sourceTree = "<group>"; };
 		9CE6D9FC1F6A1798000D38B4 /* CSSRuleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSRuleSet.h; sourceTree = "<group>"; };
@@ -117,8 +114,6 @@
 				9C4FB3751F60CD740033B3F6 /* EditorViewController.m */,
 				9C4FB3771F60CE210033B3F6 /* DetailViewController.h */,
 				9C4FB3781F60CE210033B3F6 /* DetailViewController.m */,
-				9CE4D9D71F58112E0043E6FE /* QuillView.h */,
-				9CE4D9D81F58112E0043E6FE /* QuillView.m */,
 				9CE4D9C91F580FAA0043E6FE /* Main.storyboard */,
 				9CE4D9CC1F580FAA0043E6FE /* Assets.xcassets */,
 				9CE4D9CE1F580FAA0043E6FE /* LaunchScreen.storyboard */,
@@ -311,7 +306,6 @@
 			files = (
 				9CE6DA0D1F6A1798000D38B4 /* CSSParser.m in Sources */,
 				9CE6DA081F6A1798000D38B4 /* CSSOM.m in Sources */,
-				9CE4D9D91F58112E0043E6FE /* QuillView.m in Sources */,
 				9CE6DA0B1F6A1798000D38B4 /* CSSStyleSelector.m in Sources */,
 				9CE6DA0E1F6A1798000D38B4 /* CSSTokenizer.m in Sources */,
 				9CE6DA0C1F6A1798000D38B4 /* CSSStyleSheet.m in Sources */,
