@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "http://github.com/hivecms/QuillView"
-  s.license          = 'Apache 2.0'
+  s.license          = { :type => 'Apache 2.0', :file => 'QuillView/LICENSE' }
   s.author           = { "LIN" => "linyize@gmail.com" }
   s.source           = { :git => "http://github.com/hivecms/QuillView.git", :tag => "#{s.version}" }
 

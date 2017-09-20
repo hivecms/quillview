@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "http://www.bee-framework.com"
-  s.license          = 'MIT'
+  s.license          = { :type => 'MIT', :file => 'CSSParser/LICENSE.md' }
   s.author           = { "gavinkwoe" => "gavinkwoe@gmail.com" }
   s.source           = { :git => "http://github.com/hivecms/QuillView.git", :tag => "#{s.version}" }
 
