@@ -2,9 +2,30 @@
 
 Display quill format on iOS native views.
 
+# Installtion
+
+```bash
+vi Podfile
+```
+```text
+platform :ios, '8.0'
+
+target 'your_target_name' do
+    pod 'QuillView', :git => 'https://github.com/hivecms/QuillView.git'
+end
+```
+```bash
+pod install
+```
+
+
 # Usage
 
 ```objc
+
+#import "QuillView.h"
+
+...
 
 QuillView *quillView = [[QuillView alloc] initWithFrame:frame];
 quillView.contentStrings = @"{\"ops\":[{\"insert\":\"Quill uses classes for most inline styles.\\n\\nThe exception is \"},{\"attributes\":{\"background\":\"yellow\"},\"insert\":\"background\"},{\"insert\":\" and \"},{\"attributes\":{\"color\":\"purple\"},\"insert\":\"color\"},{\"insert\":\",\\nwhere it uses inline styles.\\n\\nThis \"},{\"attributes\":{\"font\":\"PingFang TC\",\"strike\":\"true\"},\"insert\":\"demo\"},{\"insert\":\" shows how to \"},{\"attributes\":{\"size\":\"32px\"},\"insert\":{\"formula\":\"change\"}},{\"insert\":\" this.\\n\"}]}";
