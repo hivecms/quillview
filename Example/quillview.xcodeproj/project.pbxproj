@@ -16,13 +16,6 @@
 		9CE4D9CB1F580FAA0043E6FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE4D9C91F580FAA0043E6FE /* Main.storyboard */; };
 		9CE4D9CD1F580FAA0043E6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CE4D9CC1F580FAA0043E6FE /* Assets.xcassets */; };
 		9CE4D9D01F580FAA0043E6FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE4D9CE1F580FAA0043E6FE /* LaunchScreen.storyboard */; };
-		9CE6DA081F6A1798000D38B4 /* CSSOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6D9FB1F6A1798000D38B4 /* CSSOM.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9CE6DA091F6A1798000D38B4 /* CSSRuleSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6D9FD1F6A1798000D38B4 /* CSSRuleSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9CE6DA0A1F6A1798000D38B4 /* CSSSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6D9FF1F6A1798000D38B4 /* CSSSelector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9CE6DA0B1F6A1798000D38B4 /* CSSStyleSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6DA011F6A1798000D38B4 /* CSSStyleSelector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9CE6DA0C1F6A1798000D38B4 /* CSSStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6DA031F6A1798000D38B4 /* CSSStyleSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9CE6DA0D1F6A1798000D38B4 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6DA051F6A1798000D38B4 /* CSSParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9CE6DA0E1F6A1798000D38B4 /* CSSTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6DA071F6A1798000D38B4 /* CSSTokenizer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CE6DA211F6A2165000D38B4 /* quill.snow.css in Resources */ = {isa = PBXBuildFile; fileRef = 9CE6DA201F6A2165000D38B4 /* quill.snow.css */; };
 /* End PBXBuildFile section */
 
@@ -42,21 +35,6 @@
 		9CE4D9CC1F580FAA0043E6FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CE4D9CF1F580FAA0043E6FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CE4D9D11F580FAA0043E6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CE6D9FA1F6A1798000D38B4 /* CSSOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSOM.h; sourceTree = "<group>"; };
-		9CE6D9FB1F6A1798000D38B4 /* CSSOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSOM.m; sourceTree = "<group>"; };
-		9CE6D9FC1F6A1798000D38B4 /* CSSRuleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSRuleSet.h; sourceTree = "<group>"; };
-		9CE6D9FD1F6A1798000D38B4 /* CSSRuleSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSRuleSet.m; sourceTree = "<group>"; };
-		9CE6D9FE1F6A1798000D38B4 /* CSSSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSSelector.h; sourceTree = "<group>"; };
-		9CE6D9FF1F6A1798000D38B4 /* CSSSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSSelector.m; sourceTree = "<group>"; };
-		9CE6DA001F6A1798000D38B4 /* CSSStyleSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSStyleSelector.h; sourceTree = "<group>"; };
-		9CE6DA011F6A1798000D38B4 /* CSSStyleSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSStyleSelector.m; sourceTree = "<group>"; };
-		9CE6DA021F6A1798000D38B4 /* CSSStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSStyleSheet.h; sourceTree = "<group>"; };
-		9CE6DA031F6A1798000D38B4 /* CSSStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSStyleSheet.m; sourceTree = "<group>"; };
-		9CE6DA041F6A1798000D38B4 /* CSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSParser.h; sourceTree = "<group>"; };
-		9CE6DA051F6A1798000D38B4 /* CSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSParser.m; sourceTree = "<group>"; };
-		9CE6DA061F6A1798000D38B4 /* CSSTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSTokenizer.h; sourceTree = "<group>"; };
-		9CE6DA071F6A1798000D38B4 /* CSSTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSTokenizer.m; sourceTree = "<group>"; };
-		9CE6DA0F1F6A1DC0000D38B4 /* Bee_Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bee_Singleton.h; sourceTree = "<group>"; };
 		9CE6DA201F6A2165000D38B4 /* quill.snow.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = quill.snow.css; sourceTree = "<group>"; };
 		BB4B586020000E8DFD6A1AB9 /* libPods-quillview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quillview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F153DDA13466D24FE2D91DA6 /* Pods-quillview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quillview.release.xcconfig"; path = "Pods/Target Support Files/Pods-quillview/Pods-quillview.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				9CE6DA1F1F6A2165000D38B4 /* res */,
-				9CE6D9F81F6A1798000D38B4 /* parser */,
 				9CE4D9BF1F580FAA0043E6FE /* quillview */,
 				9CE4D9BE1F580FAA0043E6FE /* Products */,
 				5FB9F33E78A87709AE8A4508 /* Pods */,
@@ -129,37 +106,6 @@
 				9CE4D9C11F580FAA0043E6FE /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9CE6D9F81F6A1798000D38B4 /* parser */ = {
-			isa = PBXGroup;
-			children = (
-				9CE6D9F91F6A1798000D38B4 /* cssom */,
-				9CE6DA041F6A1798000D38B4 /* CSSParser.h */,
-				9CE6DA051F6A1798000D38B4 /* CSSParser.m */,
-				9CE6DA061F6A1798000D38B4 /* CSSTokenizer.h */,
-				9CE6DA071F6A1798000D38B4 /* CSSTokenizer.m */,
-				9CE6DA0F1F6A1DC0000D38B4 /* Bee_Singleton.h */,
-			);
-			name = parser;
-			path = quillview/css/parser;
-			sourceTree = "<group>";
-		};
-		9CE6D9F91F6A1798000D38B4 /* cssom */ = {
-			isa = PBXGroup;
-			children = (
-				9CE6D9FA1F6A1798000D38B4 /* CSSOM.h */,
-				9CE6D9FB1F6A1798000D38B4 /* CSSOM.m */,
-				9CE6D9FC1F6A1798000D38B4 /* CSSRuleSet.h */,
-				9CE6D9FD1F6A1798000D38B4 /* CSSRuleSet.m */,
-				9CE6D9FE1F6A1798000D38B4 /* CSSSelector.h */,
-				9CE6D9FF1F6A1798000D38B4 /* CSSSelector.m */,
-				9CE6DA001F6A1798000D38B4 /* CSSStyleSelector.h */,
-				9CE6DA011F6A1798000D38B4 /* CSSStyleSelector.m */,
-				9CE6DA021F6A1798000D38B4 /* CSSStyleSheet.h */,
-				9CE6DA031F6A1798000D38B4 /* CSSStyleSheet.m */,
-			);
-			path = cssom;
 			sourceTree = "<group>";
 		};
 		9CE6DA1F1F6A2165000D38B4 /* res */ = {
@@ -304,18 +250,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CE6DA0D1F6A1798000D38B4 /* CSSParser.m in Sources */,
-				9CE6DA081F6A1798000D38B4 /* CSSOM.m in Sources */,
-				9CE6DA0B1F6A1798000D38B4 /* CSSStyleSelector.m in Sources */,
-				9CE6DA0E1F6A1798000D38B4 /* CSSTokenizer.m in Sources */,
-				9CE6DA0C1F6A1798000D38B4 /* CSSStyleSheet.m in Sources */,
 				9CE4D9C81F580FAA0043E6FE /* ViewController.m in Sources */,
 				9CE4D9C51F580FAA0043E6FE /* AppDelegate.m in Sources */,
-				9CE6DA091F6A1798000D38B4 /* CSSRuleSet.m in Sources */,
 				9C4FB3761F60CD740033B3F6 /* EditorViewController.m in Sources */,
 				9CE4D9C21F580FAA0043E6FE /* main.m in Sources */,
 				9C4FB3791F60CE210033B3F6 /* DetailViewController.m in Sources */,
-				9CE6DA0A1F6A1798000D38B4 /* CSSSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
