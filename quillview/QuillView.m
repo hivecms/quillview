@@ -552,7 +552,7 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
         CGSize maxSize = CGSizeMake(cellWidth, CGFLOAT_MAX);
         CGRect frame = [text boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) context:nil];
         // TODO: 为什么高度需要+2才能显示完整？
-        // TODO: 上标、下标的高度超过计算高度
+        // 文字含有上下标时，ios10高度有误，ios8、9、11高度正确
         return CGSizeMake(cellWidth, frame.size.height + _style.textBlockInset.top + _style.textBlockInset.bottom + 2);
     }
     
