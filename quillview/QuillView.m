@@ -27,9 +27,10 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
 @end
 @interface QuillVideoCell : UICollectionViewCell
-@property (nonatomic, strong) AVPlayerViewController *videoView;
+@property (nonatomic, strong) AVPlayerViewController *videoController;
 @property (nonatomic, strong) NSMutableArray *playItems;
 @property (nonatomic, weak) QuillView *quillView;
+- (UIView *)videoView;
 @end
 
 @interface QuillView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextViewDelegate, AVPlayerViewControllerDelegate>
@@ -470,6 +471,19 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
                 [weakSelf performSelector:@selector(reloadData) withObject:nil afterDelay:0.1];
             }
         }];
+        
+        // 图片边距
+        UIEdgeInsets imageInsets = UIEdgeInsetsZero;
+        imageInsets.left = [line[@"leftPadding"] floatValue];
+        imageInsets.right = [line[@"rightPadding"] floatValue];
+        imageInsets.top = [line[@"topPadding"] floatValue];
+        imageInsets.bottom = [line[@"bottomPadding"] floatValue];
+        [cell.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(cell.contentView).offset(imageInsets.left);
+            make.right.equalTo(cell.contentView).offset(-imageInsets.right);
+            make.top.equalTo(cell.contentView).offset(imageInsets.top);
+            make.bottom.equalTo(cell.contentView).offset(-imageInsets.bottom);
+        }];
         return cell;
     }
     else if (line[@"video"]) {
@@ -482,10 +496,23 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
                 [playerItem addObserver:cell forKeyPath:QuillViewVideoPlayerControllerPresentationSizeKey options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:(__bridge void *)(QuillViewVideoPlayerObserverContext)];
                 [cell.playItems addObject:playerItem];
             }
-            cell.videoView.player = [AVPlayer playerWithPlayerItem:playerItem];
-            [cell.videoView.player play];
+            cell.videoController.player = [AVPlayer playerWithPlayerItem:playerItem];
+            [cell.videoController.player play];
             cell.quillView = self;
         }
+        
+        // 视频边距
+        UIEdgeInsets videoInsets = UIEdgeInsetsZero;
+        videoInsets.left = [line[@"leftPadding"] floatValue];
+        videoInsets.right = [line[@"rightPadding"] floatValue];
+        videoInsets.top = [line[@"topPadding"] floatValue];
+        videoInsets.bottom = [line[@"bottomPadding"] floatValue];
+        [cell.videoView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(cell.contentView).offset(videoInsets.left);
+            make.right.equalTo(cell.contentView).offset(-videoInsets.right);
+            make.top.equalTo(cell.contentView).offset(videoInsets.top);
+            make.bottom.equalTo(cell.contentView).offset(-videoInsets.bottom);
+        }];
         return cell;
     }
     
@@ -507,57 +534,83 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat cellWidth = [_style widthWithContainer:collectionView];
+    CGFloat cellHeight = cellWidth / 2.0;
+
     id line = _dataArray[indexPath.row];
+    NSAttributedString *text = line[@"text"];
     if (line[@"image"]) {
-        // 图片高度
-        CGFloat width = 0.0f;
-        CGFloat height = 0.0f;
+        UIEdgeInsets imageInsets = UIEdgeInsetsZero;
+        CGSize imageSize = CGSizeZero;
+        // 图片边距
+        imageInsets.left = [line[@"leftPadding"] floatValue];
+        imageInsets.right = [line[@"rightPadding"] floatValue];
+        imageInsets.top = [line[@"topPadding"] floatValue];
+        imageInsets.bottom = [line[@"bottomPadding"] floatValue];
+        // 图片宽高    超过剩余宽度怎么办？ 按比例？
+        imageSize.width = [line[@"width"] floatValue];
+        imageSize.height = [line[@"height"] floatValue];
+        
+        // 图片实际大小
         NSURL *imageURL = [NSURL URLWithString:line[@"image"]];
         NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
         UIImage *lastPreviousCachedImage = [[SDImageCache sharedImageCache] imageFromCacheForKey:key];
         if (lastPreviousCachedImage) {
-            width = lastPreviousCachedImage.size.width;
-            height = lastPreviousCachedImage.size.height;
+            if (imageSize.width == 0) {
+                imageSize.width = lastPreviousCachedImage.size.width;
+            }
+            if (imageSize.height == 0) {
+                imageSize.height = lastPreviousCachedImage.size.height;
+            }
         }
-        if (width > 0 && height > 0) {
-            height = cellWidth * height / width;
+
+        if (imageSize.width > 0 && imageSize.height > 0) {
+            cellHeight = (cellWidth - imageInsets.left - imageInsets.right) * imageSize.height / imageSize.width;
+            cellHeight += imageInsets.top + imageInsets.bottom;
         }
-        else {
-            height = cellWidth / 2;
-        }
-        return CGSizeMake(cellWidth, height);
     }
     else if (line[@"video"]) {
-        // 视频高度
-        CGFloat width = 0.0f;
-        CGFloat height = 0.0f;
+        UIEdgeInsets videoInsets = UIEdgeInsetsZero;
+        CGSize videoSize = CGSizeZero;
+        // 视频边距
+        videoInsets.left = [line[@"leftPadding"] floatValue];
+        videoInsets.right = [line[@"rightPadding"] floatValue];
+        videoInsets.top = [line[@"topPadding"] floatValue];
+        videoInsets.bottom = [line[@"bottomPadding"] floatValue];
+        // 视频宽高
+        videoSize.width = [line[@"width"] floatValue];
+        videoSize.height = [line[@"height"] floatValue];
+        
+        // 视频实际大小
         NSURL *videoURL = [NSURL URLWithString:line[@"video"]];
         if (_videoSizeDict[videoURL]) {
             CGSize size = [_videoSizeDict[videoURL] CGSizeValue];
-            width = size.width;
-            height = size.height;
+            if (videoSize.width == 0) {
+                videoSize.width = size.width;
+            }
+            if (videoSize.height == 0) {
+                videoSize.height = size.height;
+            }
         }
-        if (width > 0 && height > 0) {
-            height = cellWidth * height / width;
+        
+        if (videoSize.width > 0 && videoSize.height > 0) {
+            cellHeight = (cellWidth - videoInsets.left - videoInsets.right) * videoSize.height / videoSize.width;
+            cellHeight += videoInsets.top + videoInsets.bottom;
         }
-        else {
-            height = cellWidth / 2;
-        }
-        return CGSizeMake(cellWidth, height);
     }
-    
-    NSAttributedString *text = line[@"text"];
-    if (text.length > 0) {
+    else if (text.length > 0) {
         // 文本高度
         CGSize maxSize = CGSizeMake(cellWidth, CGFLOAT_MAX);
         CGRect frame = [text boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) context:nil];
         // TODO: 为什么高度需要+2才能显示完整？
         // 文字含有上下标时，ios10高度有误，ios8、9、11高度正确
-        return CGSizeMake(cellWidth, frame.size.height + _style.textBlockInset.top + _style.textBlockInset.bottom + 2);
+        cellHeight = frame.size.height + _style.textBlockInset.top + _style.textBlockInset.bottom + 2;
+    }
+    else {
+        // 空行高度
+        cellHeight = _style.fontSize;
     }
     
-    // 空行高度
-    return CGSizeMake(cellWidth, _style.fontSize);
+    return CGSizeMake(cellWidth, cellHeight);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -646,8 +699,8 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView);
             make.top.equalTo(self.contentView);
-            make.width.equalTo(self.contentView);
-            make.height.equalTo(self.contentView);
+            make.right.equalTo(self.contentView);
+            make.bottom.equalTo(self.contentView);
         }];
     }
     return self;
@@ -668,21 +721,26 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _videoView = [[AVPlayerViewController alloc] init];
-        _videoView.view.backgroundColor = [UIColor clearColor];
-        _videoView.showsPlaybackControls = YES;
-        [self.contentView addSubview:_videoView.view];
+        _videoController = [[AVPlayerViewController alloc] init];
+        _videoController.view.backgroundColor = [UIColor clearColor];
+        _videoController.showsPlaybackControls = YES;
+        [self.contentView addSubview:_videoController.view];
         
-        [_videoView.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_videoController.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView);
             make.top.equalTo(self.contentView);
-            make.width.equalTo(self.contentView);
-            make.height.equalTo(self.contentView);
+            make.right.equalTo(self.contentView);
+            make.bottom.equalTo(self.contentView);
         }];
         
         _playItems = [NSMutableArray new];
     }
     return self;
+}
+
+- (UIView *)videoView
+{
+    return _videoController.view;
 }
 
 - (void)removeAllObservers
@@ -708,9 +766,9 @@ static NSString * const QuillViewVideoPlayerControllerPresentationSizeKey = @"pr
     
     [self removeAllObservers];
     
-    if (_videoView.player) {
-        [_videoView.player pause];
-        _videoView.player = nil;
+    if (_videoController.player) {
+        [_videoController.player pause];
+        _videoController.player = nil;
     }
 }
 

@@ -28,7 +28,7 @@
 
 - (void)test2
 {
-    NSString *contents = @"{\"ops\":[{\"insert\":{\"image\":\"http://img.mp.itc.cn/upload/20160621/b2404cc3b6604e5a95a47052b3cee690.jpg\"}},{\"insert\":\"\\n\"},{\"insert\":\"\\n\\n\"},{\"insert\":{\"video\":\"http://27.148.180.112/youku/656B524E5A39821ECCED660DD/030008010059B632B8D24130AC14D874F79433-1172-38F0-2CE6-9E1576C0346A.mp4?sid=050547043700010009958_00&sign=51d4e86bb0a01aa58925413eeb94f3f5&ctype=50\"}},{\"insert\":\"\\n\"},{\"insert\":\"\\n\\n\"}]}";
+    NSString *contents = @"{\"ops\":[{\"insert\":{\"image\":\"http://img.mp.itc.cn/upload/20160621/b2404cc3b6604e5a95a47052b3cee690.jpg\",\"leftPadding\":30,\"rightPadding\":30,\"topPadding\":10,\"bottomPadding\":10,\"width\":1000}},{\"insert\":\"\\n\"},{\"insert\":\"\\n\\n\"},{\"insert\":{\"video\":\"http://k.youku.com/player/getFlvPath/sid/050666870182618268310_00_A37ab264849e0b1204007ebb988d1c92c/st/mp4/fileid/030008010059CC71809B73003E880330F10F5A-1817-D317-F3DC-3FAF355958C7?K=5cc60f77f9b2c416261fee33&hd=1&myp=0&ts=336&ymovie=1&ypp=0&ctype=10&ev=1&token=2982&oip=2130706433&sign=e41538af9dd1b4ddfa37e1ab31610135&ep=6njW7gahk9PFcrOubalYlBFtAGfVzmicu5weoXVaAnuYoubYVAP22GHSXLUj4Oo2Zi23VJCUQPe3MzCD5nwSYPmvPn2SaU55262LyoQBpB2pAn23RWEPcmBJCvwtasCX3jBq308R7MOC9U%3D&vl=0\",\"leftPadding\":30,\"rightPadding\":30,\"topPadding\":10,\"bottomPadding\":10}},{\"insert\":\"\\n\"},{\"insert\":\"\\n\\n\"}]}";
     DetailViewController *vc = [[DetailViewController alloc] init];
     vc.contents = contents;
     [self presentViewController:vc animated:YES completion:nil];
